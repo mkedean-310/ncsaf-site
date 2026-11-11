@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -17,7 +17,7 @@
   <header class="site-header" id="top">
     <div class="header-inner">
       <a class="logo" href="#top" aria-label="North Carolina Sport & Fitness home">
-        <span class="logo-mark">NC<span>SA</span>F</span>
+        <span class="logo-mark">NC<span>S</span>F</span>
         <span class="logo-sub">North Carolina Sport & Fitness</span>
       </a>
       <div class="nav-wrap">
@@ -517,6 +517,12 @@
       });
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") closeNav();
+      });
+      document.addEventListener("click", function (e) {
+        if (nav.classList.contains("is-open") && !nav.contains(e.target) && !toggle.contains(e.target)) closeNav();
+      });
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) closeNav();
       });
 
       function wireForm(formId, statusId) {
