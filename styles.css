@@ -26,6 +26,9 @@
 *::after { box-sizing: border-box; }
 
 html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 8px);
 }
@@ -491,6 +494,9 @@ blockquote footer {
   gap: 14px 16px;
 }
 .form-grid .full { grid-column: 1 / -1; }
+.form-grid > * { min-width: 0; }
+.form-grid input,
+.form-grid select { width: 100%; max-width: 100%; }
 .form-grid label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.92rem; }
 .schedule-table {
   width: 100%;
@@ -566,6 +572,13 @@ blockquote footer {
     display: none;
   }
   .site-nav.is-open { display: block; }
+  .site-nav {
+    max-height: calc(100vh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .site-nav a { display: block; }
   .site-nav ul {
     flex-direction: column;
     align-items: stretch;
@@ -583,6 +596,79 @@ blockquote footer {
   .cards { grid-template-columns: 1fr; }
   .plan.featured { transform: none; }
   .hero { min-height: 560px; }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  :root { --header-h: 64px; }
+  body { font-size: 1rem; line-height: 1.6; }
+  .header-inner { padding: 0 16px; gap: 12px; }
+  .logo { padding: 8px 0; }
+  .logo-mark { font-size: 1.85rem; }
+  .logo-sub { font-size: 0.66rem; letter-spacing: 0.1em; }
+  .menu-toggle { width: 48px; height: 48px; margin-right: -8px; }
+  .site-nav ul { padding: 0 8px; }
+  .site-nav a { padding: 13px 12px; font-size: 1.05rem; border-bottom: 1px solid #1f1f1f; }
+  .nav-cta { margin: 16px 20px 8px !important; min-height: 50px; font-size: 0.95rem; }
+
+  .hero { min-height: 0; align-items: flex-end; }
+  .hero-inner { padding: 64px 20px 56px; }
+  .eyebrow { font-size: 1rem; margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(2.5rem, 12vw, 3.3rem); line-height: 0.95; margin-bottom: 24px; }
+
+  .btn { min-height: 48px; padding: 14px 22px; font-size: 0.85rem; letter-spacing: 0.08em; }
+  .hero-actions .btn,
+  .cta-band .btn,
+  .band-dark .wrap > .btn,
+  #first-visit .btn,
+  .mission .btn,
+  #join button[type="submit"] { width: 100%; }
+  .card .btn { align-self: stretch; }
+
+  .section { padding: 52px 20px; }
+  .cta-band { padding: 44px 20px 48px; }
+  .section h2 { font-size: clamp(1.65rem, 7.4vw, 2rem); margin-bottom: 12px; }
+  .cta-band h2 { font-size: 1.35rem; line-height: 1.35; }
+  .lead { font-size: 1.02rem; }
+
+  .steps { gap: 22px; margin: 28px 0 28px; }
+  .step-icon { width: 56px; height: 56px; margin-bottom: 8px; }
+  .step h3 { font-size: 1.1rem; }
+
+  .newsletter-grid { gap: 0; }
+  .newsletter-art { display: none; }
+  .form-row { flex-direction: column; }
+  .form-row input[type="email"],
+  .form-row .btn { flex: 0 0 auto; width: 100%; min-width: 0; }
+
+  input, select, textarea { font-size: 16px; min-height: 50px; }
+
+  blockquote { padding: 18px 18px 14px; }
+  blockquote p { font-size: 1.05rem; }
+
+  .expect { gap: 16px; margin: 24px 0 24px; }
+  .expect article { padding: 18px 18px 16px; }
+
+  .cards { gap: 18px; }
+  .card-art { height: 120px; }
+  .card-body { padding: 18px 18px 20px; }
+  .card h3 { font-size: 1.4rem; }
+
+  .mission p { font-size: 1rem; }
+
+  .plans { gap: 16px; margin-top: 24px; }
+  .plan { padding: 22px 18px 22px; }
+  .plan .price { font-size: 2.5rem; }
+
+  .schedule-table th,
+  .schedule-table td { padding: 10px 10px; }
+  .schedule-table td:first-child { width: 38%; font-weight: 700; }
+  .schedule-table td { width: auto; }
+
+  .site-footer { padding: 48px 20px 24px; }
+  .footer-grid { gap: 28px; }
+  .site-footer p { overflow-wrap: anywhere; }
+  .legal { margin-top: 32px; font-size: 0.85rem; }
 }
 
 @media (max-width: 1100px) and (min-width: 901px) {
